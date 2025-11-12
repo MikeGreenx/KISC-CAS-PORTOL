@@ -8,12 +8,58 @@
     <h2 style="margin:0 0 8px 0">Submit a CAS activity</h2>
     <form id="submitForm">
       <div class="form-field"><label>Student ID</label><input name="studentId" id="s_studentId" required></div>
-      <div class="form-field"><label>Student Name</label><input name="studentName" id="s_studentName" required></div>
-      <div class="form-field"><label>Activity Title</label><input name="activityTitle" id="s_activityTitle" required></div>
-      <div class="form-field"><label>CAS Strand</label><select name="casStrand" id="s_casStrand" required><option value=''>Select...</option><option>Creativity</option><option>Action</option><option>Service</option></select></div>
-      <div class="form-field"><label>Description</label><textarea name="description" id="s_description" rows="3"></textarea></div>
-      <div class="row"><div class="col form-field"><label>Creativity Hours</label><input type="number" step="0.5" name="creativityHours" id="s_creativityHours"></div><div class="col form-field"><label>Action Hours</label><input type="number" step="0.5" name="actionHours" id="s_actionHours"></div><div class="col form-field"><label>Service Hours</label><input type="number" step="0.5" name="serviceHours" id="s_serviceHours"></div></div>
-      <div class="actions"><button type="button" class="btn submitBtn" onclick="submitForm('submitForm','submitResult')">Submit</button><button type="button" class="btn checkBtn" onclick="location.href='check.html'">Go to Check</button></div>
+      <label>Student Name (only first time)</label>
+    <input type="text" name="studentName">
+
+    <label>CAS Adviser</label>
+    <input type="text" name="casAdviser">
+
+    <!-- Date -->
+    <label>Date</label>
+    <input type="date" name="date" required>
+
+    <!-- Activity -->
+    <label>Activity Title</label>
+    <input type="text" name="activityTitle" required>
+
+    <!-- CAS Strand -->
+    <label>CAS Strand</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="casStrand" value="Creativity"> Creativity</label>
+      <label><input type="checkbox" name="casStrand" value="Action"> Action</label>
+      <label><input type="checkbox" name="casStrand" value="Service"> Service</label>
+    </div>
+
+    <!-- Description -->
+    <label>Description of the Activity</label>
+    <textarea name="description" rows="3" required></textarea>
+
+    <!-- Learning Outcomes -->
+    <label>Learning Outcomes Addressed</label>
+    <p>(Tick all that apply)</p>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="learningOutcomes" value="Identify own strengths and develop areas for growth"> Identify own strengths and develop areas for growth</label>
+      <label><input type="checkbox" name="learningOutcomes" value="Demonstrate that challenges have been undertaken, developing new skills in the process"> Demonstrate that challenges have been undertaken, developing new skills in the process</label>
+      <label><input type="checkbox" name="learningOutcomes" value="Demonstrate how to initiate and plan a CAS experience"> Demonstrate how to initiate and plan a CAS experience</label>
+      <label><input type="checkbox" name="learningOutcomes" value="Show commitment to and perseverance in CAS experiences"> Show commitment to and perseverance in CAS experiences</label>
+      <label><input type="checkbox" name="learningOutcomes" value="Demonstrate the skills and recognise the benefits of working collaboratively"> Demonstrate the skills and recognise the benefits of working collaboratively</label>
+      <label><input type="checkbox" name="learningOutcomes" value="Demonstrate engagement with issues of global significance"> Demonstrate engagement with issues of global significance</label>
+      <label><input type="checkbox" name="learningOutcomes" value="Recognise and consider the ethics of choices and actions"> Recognise and consider the ethics of choices and actions</label>
+    </div>
+
+    <!-- Reflection -->
+    <label>Personal Reflection</label>
+    <textarea name="reflection" rows="6" placeholder="What did I do? What did I learn about myself and others? How did I feel before, during, and after the activity? Did I face challenges, and how did I overcome them? How does this activity contribute to my personal growth and goals?" required></textarea>
+
+    <!-- Hours Logged -->
+    <label>Hours Logged</label>
+    <div style="display: flex; gap: 10px;">
+      <div><strong>Creativity:</strong><br><input type="number" name="creativityHours" min="0"></div>
+      <div><strong>Action:</strong><br><input type="number" name="actionHours" min="0"></div>
+      <div><strong>Service:</strong><br><input type="number" name="serviceHours" min="0"></div>
+    </div>
+
+    <button type="submit">Submit</button>
     </form>
     <div id="submitResult" style="margin-top:12px"></div>
   </section>
@@ -22,3 +68,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
