@@ -35,9 +35,7 @@
 <main class="container">
   <section class="card" style="margin-top:22px">
     <h2>Submit a CAS activity</h2>
-
     <form id="submitForm">
-      <!-- Student Info -->
       <label>Student Email / ID</label>
       <input type="text" name="studentId" required>
 
@@ -47,14 +45,12 @@
       <label>CAS Adviser</label>
       <input type="text" name="casAdviser">
 
-      <!-- Date & Activity -->
       <label>Date</label>
       <input type="date" name="date" required>
 
       <label>Activity Title</label>
       <input type="text" name="activityTitle" required>
 
-      <!-- CAS Strand -->
       <label>CAS Strand</label>
       <div class="checkbox-group">
         <label><input type="checkbox" name="casStrand" value="Creativity"> Creativity</label>
@@ -62,7 +58,6 @@
         <label><input type="checkbox" name="casStrand" value="Service"> Service</label>
       </div>
 
-      <!-- Description & Learning Outcomes -->
       <label>Description of the Activity</label>
       <textarea name="description" rows="3" required></textarea>
 
@@ -77,13 +72,11 @@
         <label><input type="checkbox" name="learningOutcomes" value="Recognise and consider the ethics of choices and actions"> Recognise and consider the ethics of choices and actions</label>
       </div>
 
-      <!-- Reflection -->
       <label>Personal Reflection</label>
-      <textarea name="reflection" rows="6" placeholder="What did I do? What did I learn? How did I feel? How does this contribute to my growth?" required></textarea>
+      <textarea name="reflection" rows="6" required></textarea>
 
-      <!-- Hours -->
       <label>Hours Logged</label>
-      <div style="display: flex; gap: 10px;">
+      <div style="display:flex;gap:10px;">
         <div><strong>Creativity:</strong><br><input type="number" name="creativityHours" min="0"></div>
         <div><strong>Action:</strong><br><input type="number" name="actionHours" min="0"></div>
         <div><strong>Service:</strong><br><input type="number" name="serviceHours" min="0"></div>
@@ -107,34 +100,26 @@ const toast = document.getElementById('toast');
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-
-  // Convert form data into an object
   const formData = new FormData(form);
   const data = {};
 
   formData.forEach((value, key) => {
     if (data[key]) {
-      // Handle multiple checkboxes
-      if (Array.isArray(data[key])) {
-        data[key].push(value);
-      } else {
-        data[key] = [data[key], value];
-      }
-    } else {
-      data[key] = value;
-    }
+      if (Array.isArray(data[key])) data[key].push(value);
+      else data[key] = [data[key], value];
+    } else data[key] = value;
   });
 
-  // Send POST request to your web app
   fetch('https://script.google.com/macros/s/AKfycbxC_981gm8HedrJLdDtKccF1UFiVxGZsl1zuoXGuj-TBzamtm2P7M7ravEydFS-OZKJZQ/exec', {
     method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   })
   .then(res => res.json())
   .then(resp => {
     if (resp.status === 'success') {
       toast.style.display = 'block';
-      setTimeout(() => { toast.style.display = 'none'; }, 4000);
+      setTimeout(() => toast.style.display = 'none', 4000);
       form.reset();
     } else {
       document.getElementById('submitResult').innerText = 'Error: ' + resp.message;
