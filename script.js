@@ -72,3 +72,4 @@ function fetchCommunityTotal(targetId){
     .then(text=>{ try{ const d = JSON.parse(text); if(d.error) target.textContent = 'Community hours: ?'; else target.textContent = 'Community hours: '+(d.total||0)+' hrs'; }catch(e){ target.textContent = 'Community hours: ?'; } })
     .catch(()=>{ target.textContent = 'Community hours: ?'; });
 }
+
