@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Check Hours</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+<nav class="topbar"><div class="inner container"><div class="logo">CAS</div><div class="links nav-links"><a href="index.html">Home</a><a href="submit.html">Submit</a><a href="check.html">Check Hours</a><a href="about.html">About</a></div></div></nav>
+<main class="container">
+  <section class="card" style="margin-top:22px">
+    <h2 style="margin:0 0 8px 0">Check My Hours</h2>
+    <div class="form-field"><label>Student ID</label><input id="c_studentId" name="studentId" placeholder="e.g. STU001"></div>
+    <div class="actions"><button class="btn checkBtn" onclick="checkHours('c_studentId','checkResult')">Check</button></div>
+    <div id="checkResult" style="margin-top:12px"></div>
+    <div style="margin-top:18px;text-align:center;color:#00695c;font-weight:700" id="communityTotal">Community hours: …</div>
+  </section>
+</main>
+<footer><div class="container">“Small actions, big impact.” — Kitengela International CAS</div></footer>
+<script>window.addEventListener('load',()=>fetchCommunityTotal('communityTotal'))</script>
+<script src="script.js"></script>
+</body>
+</html>
