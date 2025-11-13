@@ -1,4 +1,4 @@
-const scriptURL = "https://script.google.com/macros/s/AKfycbxC_981gm8HedrJLdDtKccF1UFiVxGZsl1zuoXGuj-TBzamtm2P7M7ravEydFS-OZKJZQ/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbzYKZl05OwdtVN4qTkhyZM6ynRKwDjN5M8G5okH01-wEgw0qPVgOVk8RtiytQTRWFPVGA/exec";
 
 // navbar hide on scroll
 let lastScroll = 0;
@@ -72,5 +72,6 @@ function fetchCommunityTotal(targetId){
     .then(text=>{ try{ const d = JSON.parse(text); if(d.error) target.textContent = 'Community hours: ?'; else target.textContent = 'Community hours: '+(d.total||0)+' hrs'; }catch(e){ target.textContent = 'Community hours: ?'; } })
     .catch(()=>{ target.textContent = 'Community hours: ?'; });
 }
+
 
 
