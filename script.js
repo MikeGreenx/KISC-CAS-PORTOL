@@ -73,3 +73,4 @@ function fetchCommunityTotal(targetId){
     .catch(()=>{ target.textContent = 'Community hours: ?'; });
 }
 
+
